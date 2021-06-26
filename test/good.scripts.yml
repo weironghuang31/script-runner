@@ -1,0 +1,6 @@
+envs:
+  TEST_VERSION: ${TEST_VERSION:-0.0.0}
+
+scripts:
+  foo: echo $TEST_VERSION
+  bar: echo hello world

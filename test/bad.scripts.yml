@@ -1,0 +1,6 @@
+envs:
+  - VERSION: 0.0.0
+
+scripts:
+  - foo: echo hello
+  - bar: echo world

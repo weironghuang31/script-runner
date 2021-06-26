@@ -1,0 +1,17 @@
+envs:
+  VERSION: 0.0.1
+
+scripts:
+  test: |
+    go test ./...
+  build: |
+    echo "building v$VERSION"
+    if [ -d ".dist" ] ; then
+      rm -rf .dist
+    fi
+
+    FLAGS="-s -w -X github.com/weironghuang31/script-runner/cmd.Version=$VERSION"
+    CGO_ENABLED=0 GOOS=linux go build -ldflags "$FLAGS" -o .dist/linux/run
+    GOOS=darwin go build -ldflags "$FLAGS" -o .dist/darwin/run
+    GOOS=windows go build -ldflags "$FLAGS" -o .dist/windows/run.exe
+    chmod +x .dist/
