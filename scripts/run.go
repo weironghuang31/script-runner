@@ -70,18 +70,18 @@ func getShell() (string, error) {
 				return "", err
 			}
 
-			pathes := []string{gitPath, "..", ".."}
+			paths := []string{gitPath, "..", ".."}
 
 			if strings.Contains(gitPath, "mingw64") {
 				// if the path contains mingw64 go up one parent
-				pathes = append(pathes, "..")
+				paths = append(paths, "..")
 			}
 
-			pathes = append(pathes, "bin", "sh.exe")
+			paths = append(paths, "bin", "bash.exe")
 
-			shellPath = filepath.Join(pathes...)
+			shellPath = filepath.Join(paths...)
 		} else {
-			shPath, err := exec.LookPath("sh")
+			shPath, err := exec.LookPath("bash")
 
 			if err != nil {
 				return "", err
